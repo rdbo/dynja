@@ -54,13 +54,15 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
     let context: proc_macro2::TokenStream = context_str.parse().unwrap();
 
     quote! {
-        impl TemplateFile for #struct_ident {
+        impl dynja::TemplateFile for #struct_ident {
             const PATH: &'static str = #template_path;
+        }
 
+        impl #struct_ident {
             fn render(&self) -> String {
                 // TODO: Don't use unwraps
-                let template = dynja::templates().get_template(Self::PATH).unwrap();
-                template.render(minijinja::context!(#context)).unwrap()
+                let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH).unwrap();
+                template.render(dynja::minijinja::context!(#context)).unwrap()
             }
         }
     }

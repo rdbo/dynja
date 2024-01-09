@@ -1,4 +1,4 @@
-use dynja::*;
+use dynja::Template;
 
 #[derive(Template, Debug)]
 #[template(path = "index.html")]
@@ -11,6 +11,6 @@ fn main() {
 
     let template = MyTemplate { name: "Test" };
     println!("Template: {:?}", template);
-    println!("Template Path: {:?}", <MyTemplate as TemplateFile>::PATH);
+    // println!("Template Path: {:?}", <MyTemplate as TemplateFile>::PATH);
     println!("Template Render: {}", template.render());
 }
