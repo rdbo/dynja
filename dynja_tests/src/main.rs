@@ -12,5 +12,5 @@ fn main() {
     let template = MyTemplate { name: "Test" };
     println!("Template: {:?}", template);
     // println!("Template Path: {:?}", <MyTemplate as TemplateFile>::PATH);
-    println!("Template Render: {}", template.render());
+    println!("Template Render: {}", template.render().unwrap());
 }

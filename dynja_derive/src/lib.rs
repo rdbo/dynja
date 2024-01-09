@@ -59,10 +59,10 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
         }
 
         impl #struct_ident {
-            fn render(&self) -> String {
+            fn render(&self) -> Result<String, dynja::minijinja::Error> {
                 // TODO: Don't use unwraps
                 let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH).unwrap();
-                template.render(dynja::minijinja::context!(#context)).unwrap()
+                template.render(dynja::minijinja::context!(#context))
             }
         }
     }

@@ -2,7 +2,15 @@ use minijinja::Environment;
 use std::cell::OnceCell;
 use std::sync::{Arc, Mutex, OnceLock};
 
+#[cfg(debug_assertions)]
 pub use dynja_derive::Template;
+
+#[cfg(not(debug_assertions))]
+pub use askama;
+
+#[cfg(not(debug_assertions))]
+pub use askama_axum::Template;
+
 pub use minijinja;
 
 pub trait TemplateFile {

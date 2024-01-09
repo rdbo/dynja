@@ -6,5 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-dynja_derive={ version = "0.1", path = "../dynja_derive" }
+askama = { version = "0.12", features = ["with-axum"] }
+askama_axum = "0.4.0"
+dynja_derive ={ version = "0.1", path = "../dynja_derive" }
 minijinja = { version = "1.0", features = ["loader"] }
