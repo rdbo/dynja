@@ -2,6 +2,11 @@
 name = "dynja_derive"
 version = "0.1.0"
 edition = "2021"
+description = "Procedural macros for dynja"
+readme = "README.md"
+homepage = "https://github.com/rdbo/dynja"
+repository = "https://github.com/rdbo/dynja"
+license = "AGPL-3.0"
 
 [lib]
 proc-macro = true
