@@ -5,6 +5,7 @@
 Let's look at two of the alternatives:
 - Askama: extremely fast on benchmarks, but doesn't have a very fun development experience, since you have to recompile your webserver each time you modify a template
 - MiniJinja: decent performance on benchmarks, but has an awesome developer experience, with hot reloading and possibly even live reloading
+
 So let's mix both: use MiniJinja for debug mode (better DevEx), and Askama for release mode (better performance)
 
 And that's what Dynja essentially is
