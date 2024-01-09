@@ -45,6 +45,14 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
     let template_path = get_template_path(template_attr.to_token_stream().into());
     let template_path = parse_macro_input!(template_path as LitStr);
 
+    let mut context_str = String::new();
+    for field in struct_data.fields {
+        let ident = field.ident.expect("Failed to read struct field");
+        context_str += format!("{} => self.{}, ", ident, ident).as_str();
+    }
+
+    let context: proc_macro2::TokenStream = context_str.parse().unwrap();
+
     quote! {
         impl TemplateFile for #struct_ident {
             const PATH: &'static str = #template_path;
@@ -52,7 +60,7 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
             fn render(&self) -> String {
                 // TODO: Don't use unwraps
                 let template = dynja::templates().get_template(Self::PATH).unwrap();
-                template.render(minijinja::context!()).unwrap()
+                template.render(minijinja::context!(#context)).unwrap()
             }
         }
     }
