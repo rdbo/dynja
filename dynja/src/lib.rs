@@ -6,10 +6,7 @@ use std::sync::{Arc, Mutex, OnceLock};
 pub use dynja_derive::Template;
 
 #[cfg(not(debug_assertions))]
-pub use askama;
-
-#[cfg(not(debug_assertions))]
-pub use askama_axum::Template;
+pub use askama::Template;
 
 pub use minijinja;
 
