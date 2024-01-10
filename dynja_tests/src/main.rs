@@ -2,8 +2,8 @@ use dynja::Template;
 
 #[derive(Template, Debug)]
 #[template(path = "index.html")]
-struct MyTemplate {
-    name: &'static str,
+struct MyTemplate<'a> {
+    name: &'a str,
 }
 
 fn main() {
