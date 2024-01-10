@@ -59,7 +59,6 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
             const PATH: &'static str = #template_path;
         }
 
-        // TODO: Add fix for lifetimes
         impl #impl_generics #struct_ident #ty_generics #where_clause {
             fn render(&self) -> Result<String, dynja::minijinja::Error> {
                 let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH)?;
