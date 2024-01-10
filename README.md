@@ -36,5 +36,10 @@ It will automatically choose between minijinja on debug, and askama on release, 
 
 Have fun!
 
+## License
+This project is licensed under the `GNU AGPL-3.0`. No later versions allowed.
+
+Read the `LICENSE` file in the root directory of the project for more information.
+
 ## Considerations
 Even though MiniJinja and Askama are both related to Jinja, they are not 100% compatible with each other. So be wary of inconsistencies!
