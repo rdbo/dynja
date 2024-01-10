@@ -1,5 +1,5 @@
 use minijinja::Environment;
-use std::sync::OnceLock;
+use std::sync::{Mutex, OnceLock};
 
 #[cfg(debug_assertions)]
 pub use dynja_derive::Template;
@@ -15,11 +15,13 @@ pub trait TemplateFile {
                               // just like with 'askama'.
 }
 
-pub fn templates() -> &'static Environment<'static> {
-    static ENV: OnceLock<Environment> = OnceLock::new();
+pub fn templates() -> &'static Mutex<Environment<'static>> {
+    static ENV: OnceLock<Mutex<Environment>> = OnceLock::new();
     ENV.get_or_init(|| {
         let mut env = Environment::new();
         env.set_loader(minijinja::path_loader("templates"));
-        env
+
+        let mutex = Mutex::new(env);
+        mutex
     })
 }
