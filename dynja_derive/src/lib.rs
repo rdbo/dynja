@@ -45,21 +45,22 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
     let template_path = get_template_path(template_attr.to_token_stream().into());
     let template_path = parse_macro_input!(template_path as LitStr);
 
+    let (impl_generics, ty_generics, where_clause) = ast.generics.split_for_impl();
+
     let mut context_str = String::new();
     for field in struct_data.fields {
         let ident = field.ident.expect("Failed to read struct field");
         context_str += format!("{} => self.{}, ", ident, ident).as_str();
     }
-
     let context: proc_macro2::TokenStream = context_str.parse().unwrap();
 
     quote! {
-        impl dynja::TemplateFile for #struct_ident {
+        impl #impl_generics dynja::TemplateFile for #struct_ident #ty_generics #where_clause {
             const PATH: &'static str = #template_path;
         }
 
         // TODO: Add fix for lifetimes
-        impl #struct_ident {
+        impl #impl_generics #struct_ident #ty_generics #where_clause {
             fn render(&self) -> Result<String, dynja::minijinja::Error> {
                 let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH)?;
                 template.render(dynja::minijinja::context!(#context))
