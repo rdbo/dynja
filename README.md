@@ -43,7 +43,43 @@ Tested on: [https://github.com/rdbo/axum-htmx-dynja-test](https://github.com/rdb
 
 Command: `rewrk -c 100 -t 3 -h "http://127.0.0.1:8000" -d 10s`
 
-Dynja 0.2 (Debug)
+Dynja 0.3.0 (Debug)
+```
+Beginning round 1...
+Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
+  Latencies:
+    Avg      Stdev    Min      Max      
+    26.99ms  10.18ms  0.71ms   67.77ms  
+  Requests:
+    Total:  36861  Req/Sec: 3690.25
+  Transfer:
+    Total: 31.92 MB Transfer Rate: 3.20 MB/Sec  
+```
+
+Dynja 0.3.0 (Release)
+```
+Beginning round 1...
+Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
+  Latencies:
+    Avg      Stdev    Min      Max      
+    2.73ms   1.12ms   0.06ms   29.69ms  
+  Requests:
+    Total: 364482  Req/Sec: 36478.85
+  Transfer:
+    Total: 315.62 MB Transfer Rate: 31.59 MB/Sec
+```
+
+The release build got about 10 times the amount of requests per second.
+
+You may think this is due to the web server and other packages also being compiled in release vs in debug, and that does play a role in the results.
+
+It's important to say, though, that I've spent some time testing each individual engine on both debug and release, and this big diffence between the engines is expected.
+
+On a side note, this benchmark also doesn't say that minijinja is slow by any means.
+In other to achieve hot reloading of the templates, we have to clear the cached templates of minijinja for every `render()`, which means we add a severe
+bottleneck to its performance to get a better development experience. Here are the results of a test done before hot reload was introduced:
+
+Dynja 0.2.0 (Debug)
 ```
 Beginning round 1...
 Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
@@ -55,23 +91,6 @@ Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
   Transfer:
     Total: 102.51 MB Transfer Rate: 10.26 MB/Sec
 ```
-Dynja 0.2 (Release)
-```
-Beginning round 1...
-Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
-  Latencies:
-    Avg      Stdev    Min      Max      
-    2.67ms   1.10ms   0.06ms   21.09ms  
-  Requests:
-    Total: 373464  Req/Sec: 37380.96
-  Transfer:
-    Total: 323.40 MB Transfer Rate: 32.37 MB/Sec
-```
-The release build got over 3 times the amount of requests per second.
-
-You may think this is due to the web server and other packages also being compiled in release vs in debug, and that does play a role in the results.
-
-On the other hand, I've spent some time testing each individual engine on both debug and release, and this big diffence between the engines is expected.
 
 ## License
 This project is licensed under the `GNU AGPL-3.0`. No later versions allowed.
