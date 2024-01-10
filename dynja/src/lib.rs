@@ -1,6 +1,6 @@
 use minijinja::Environment;
 use std::cell::OnceCell;
-use std::sync::{Arc, Mutex, OnceLock};
+use std::sync::OnceLock;
 
 #[cfg(debug_assertions)]
 pub use dynja_derive::Template;
