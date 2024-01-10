@@ -63,7 +63,7 @@ dependencies = [
 
 [[package]]
 name = "dynja"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "askama",
  "dynja_derive",
@@ -72,7 +72,7 @@ dependencies = [
 
 [[package]]
 name = "dynja_derive"
-version = "0.2.1"
+version = "0.3.0"
 dependencies = [
  "proc-macro2",
  "quote",

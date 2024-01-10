@@ -7,4 +7,4 @@ edition = "2021"
 
 [dependencies]
 askama = "0.12"
-dynja = { version = "0.2", path = "../dynja" }
+dynja = { path = "../dynja" }
