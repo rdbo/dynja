@@ -1,5 +1,4 @@
 use minijinja::Environment;
-use std::cell::OnceCell;
 use std::sync::OnceLock;
 
 #[cfg(debug_assertions)]

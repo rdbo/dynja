@@ -58,10 +58,10 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
             const PATH: &'static str = #template_path;
         }
 
+        // TODO: Add fix for lifetimes
         impl #struct_ident {
             fn render(&self) -> Result<String, dynja::minijinja::Error> {
-                // TODO: Don't use unwraps
-                let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH).unwrap();
+                let template = dynja::templates().get_template(<Self as dynja::TemplateFile>::PATH)?;
                 template.render(dynja::minijinja::context!(#context))
             }
         }
