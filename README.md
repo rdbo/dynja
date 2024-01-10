@@ -69,7 +69,9 @@ Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
 ```
 The release build got over 3 times the amount of requests per second.
 
-You may think this is due to the web server also being compiled in release vs in debug, but I've spent some time testing each individual engine on both debug and release, and these results match my previous ones.
+You may think this is due to the web server and other packages also being compiled in release vs in debug, and that does play a role in the results.
+
+On the other hand, I've spent some time testing each individual engine on both debug and release, and this big diffence between the engines is expected.
 
 ## License
 This project is licensed under the `GNU AGPL-3.0`. No later versions allowed.
