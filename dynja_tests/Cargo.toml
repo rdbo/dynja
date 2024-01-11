@@ -6,5 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-askama = "0.12"
-dynja = { path = "../dynja", features = ["askama_release"] }
+dynja = { path = "../dynja" }
+askama = { version = "0.12", optional = true }
+
+[features]
+default = ["askama_release"]
+askama_release = ["dynja/askama_release", "dep:askama"]
