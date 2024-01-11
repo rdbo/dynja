@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+
+ Copyright (C) 2024    Rdbo
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License version 3
+ as published by the Free Software Foundation.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   sodipodi:docname="dynja.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.87165877"
+     inkscape:cx="293.69291"
+     inkscape:cy="484.1344"
+     inkscape:window-width="1892"
+     inkscape:window-height="989"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#b41717;fill-opacity:1;stroke:#3c3c3c;stroke-width:4.30365;stroke-dasharray:none;stroke-opacity:1"
+       id="path1"
+       cx="95.25"
+       cy="105.83334"
+       r="61.348179" />
+    <path
+       style="fill:#802a2a;fill-opacity:1;stroke:#3c3c3c;stroke-width:4.23333;stroke-dasharray:none;stroke-opacity:1"
+       d="m 95.39697,116.92505 -50.481617,22.10323 c 22.559267,37.25012 79.878527,36.9068 100.724697,-0.0331 z"
+       id="path3"
+       sodipodi:nodetypes="cccc" />
+    <path
+       style="fill:#f4f4ff;fill-opacity:1;stroke:#3c3c3c;stroke-width:4.23333;stroke-dasharray:none;stroke-opacity:1"
+       d="M 37.835417,100.0125 H 150.8125 L 122.50208,128.4941 95.25,116.41667 66.145833,129.57709 Z"
+       id="path2"
+       sodipodi:nodetypes="cccccc" />
+    <path
+       style="fill:#121220;fill-opacity:1;stroke:#3c3c3c;stroke-width:4.23333;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.364583,83.872917 6.35,-11.90625 H 146.57917 l 5.29166,11.90625 z"
+       id="path4"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
