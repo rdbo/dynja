@@ -1,6 +1,6 @@
 [package]
 name = "dynja"
-version = "0.3.1"
+version = "0.4.0"
 edition = "2021"
 description = "Jinja pseudo-engine focused on DevEx and Performance"
 readme = "README.md"
@@ -12,7 +12,7 @@ license = "AGPL-3.0"
 
 [dependencies]
 askama = { version = "0.12", optional = true }
-dynja_derive = { version = "0.3", path = "../dynja_derive" }
+dynja_derive = { version = "0.4", path = "../dynja_derive" }
 minijinja = { version = "1.0", features = ["loader"] }
 
 [features]
