@@ -95,7 +95,7 @@ The release build finished the iterations about 110 times faster than the debug 
 
 On a side note, this benchmark also doesn't say that minijinja is slow by any means.
 In other to achieve hot reloading of the templates, we have to clear the cached templates of minijinja for every `render()`, which means we add a severe
-bottleneck to its performance to get a better development experience. Here are the results of a test done before hot reload was introduced:
+bottleneck to its performance to get a better development experience. Here are the results of a test done without the `"askama_release"` feature, on release mode:
 
 Dynja 0.4.0 (Release)
 ```
