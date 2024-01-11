@@ -1,4 +1,5 @@
 # Dynja
+![dynja-logo](https://raw.githubusercontent.com/rdbo/dynja/master/LOGO.png)
 ### Jinja pseudo-engine focused on DevEx and Performance
 
 ## Why Dynja?
