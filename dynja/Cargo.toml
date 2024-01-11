@@ -16,4 +16,5 @@ dynja_derive = { version = "0.4", path = "../dynja_derive" }
 minijinja = { version = "1.0", features = ["loader"] }
 
 [features]
+default = []
 askama_release = ["dep:askama"]
