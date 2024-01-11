@@ -42,62 +42,79 @@ dynja = "0.4"
 ```
 It has optimizations for `minijinja` on release mode as well, but it won't be as performant as `askama`.
 
+Read the [Considerations](#Considerations) section for more information.
+
 Have fun!
 
 ## Benchmarks
 NOTE: These benchmarks are not done properly, so they don't represent a real world scenario. They do let you see the difference between switching the engines though.
 
-Tested on: [https://github.com/rdbo/axum-htmx-dynja-test](https://github.com/rdbo/axum-htmx-dynja-test)
+Tested on `dynja_bench`, located on the root directory of this repository.
 
-Command: `rewrk -c 100 -t 3 -h "http://127.0.0.1:8000" -d 10s`
+Dynja 0.4.0 (Debug)
+```
+Benchmarking: MiniJinja
+<!DOCTYPE html>
+<html>
+  <head></head>
 
-Dynja 0.3.0 (Debug)
-```
-Beginning round 1...
-Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
-  Latencies:
-    Avg      Stdev    Min      Max      
-    26.99ms  10.18ms  0.71ms   67.77ms  
-  Requests:
-    Total:  36861  Req/Sec: 3690.25
-  Transfer:
-    Total: 31.92 MB Transfer Rate: 3.20 MB/Sec  
-```
+  <body>
+    <h1>Dynja Benchmark</h1>
+    <h2>Name: Tests</h2>
+    <h2>Number: 1337</h2>
+    <h2>Float: 420.0</h2>
+  </body>
+</html>
 
-Dynja 0.3.0 (Release)
-```
-Beginning round 1...
-Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
-  Latencies:
-    Avg      Stdev    Min      Max      
-    2.73ms   1.12ms   0.06ms   29.69ms  
-  Requests:
-    Total: 364482  Req/Sec: 36478.85
-  Transfer:
-    Total: 315.62 MB Transfer Rate: 31.59 MB/Sec
+Iteration: 999999
+Benchmark finished
+Time taken to finish iterations: 103629ms (103s)
 ```
 
-The release build got about 10 times the amount of requests per second.
+Dynja 0.4.0 (Release - features = \["askama_release"\])
+```
+Benchmarking: Askama
+<!DOCTYPE html>
+<html>
+  <head></head>
 
-You may think this is due to the web server and other packages also being compiled in release vs in debug, and that does play a role in the results.
+  <body>
+    <h1>Dynja Benchmark</h1>
+    <h2>Name: Tests</h2>
+    <h2>Number: 1337</h2>
+    <h2>Float: 420</h2>
+  </body>
+</html>
 
-It's important to say, though, that I've spent some time testing each individual engine on both debug and release, and this big diffence between the engines is expected.
+Iteration: 999999
+Benchmark finished
+Time taken to finish iterations: 937ms (0s)
+```
+
+The release build finished the iterations about 110 times faster than the debug build.
 
 On a side note, this benchmark also doesn't say that minijinja is slow by any means.
 In other to achieve hot reloading of the templates, we have to clear the cached templates of minijinja for every `render()`, which means we add a severe
 bottleneck to its performance to get a better development experience. Here are the results of a test done before hot reload was introduced:
 
-Dynja 0.2.0 (Debug)
+Dynja 0.4.0 (Release)
 ```
-Beginning round 1...
-Benchmarking 100 connections @ http://127.0.0.1:8000 for 10 second(s)
-  Latencies:
-    Avg      Stdev    Min      Max      
-    8.41ms   3.08ms   0.30ms   24.74ms  
-  Requests:
-    Total: 118376  Req/Sec: 11851.72
-  Transfer:
-    Total: 102.51 MB Transfer Rate: 10.26 MB/Sec
+Benchmarking: MiniJinja
+<!DOCTYPE html>
+<html>
+  <head></head>
+
+  <body>
+    <h1>Dynja Benchmark</h1>
+    <h2>Name: Tests</h2>
+    <h2>Number: 1337</h2>
+    <h2>Float: 420.0</h2>
+  </body>
+</html>
+
+Iteration: 999999
+Benchmark finished
+Time taken to finish iterations: 2851ms (2s)
 ```
 
 ## License
@@ -107,3 +124,5 @@ Read the `LICENSE` file in the root directory of the project for more informatio
 
 ## Considerations
 Even though MiniJinja and Askama are both related to Jinja, they are not 100% compatible with each other. So be wary of inconsistencies!
+
+For most cases, the slower performance of MiniJinja won't affect you as much as you think. In the benchmark above (release mode), it still manage to render the template 350,754 times in a single second, which is more than enough for, say, a web server. If you really need that performance edge and you know that your templates are compatible across the engines, Askama still takes the win with 1,067,235 renders per second, according to the benchmark.
