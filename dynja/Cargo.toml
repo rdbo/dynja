@@ -11,6 +11,9 @@ license = "AGPL-3.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-askama = { version = "0.12", default-features = true }
+askama = { version = "0.12", optional = true }
 dynja_derive = { version = "0.3", path = "../dynja_derive" }
 minijinja = { version = "1.0", features = ["loader"] }
+
+[features]
+askama_release = ["dep:askama"]
