@@ -1,6 +1,6 @@
 [package]
 name = "dynja"
-version = "0.4.0"
+version = "0.4.1"
 edition = "2021"
 description = "Jinja pseudo-engine focused on DevEx and Performance"
 readme = "README.md"
