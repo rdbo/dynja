@@ -71,7 +71,7 @@ Benchmark finished
 Time taken to finish iterations: 103629ms (103s)
 ```
 
-Dynja 0.4.0 (Release - features = \["askama_release"\])
+Dynja 0.4.0 (Release - `features = ["askama_release"]`)
 ```
 Benchmarking: Askama
 <!DOCTYPE html>
