@@ -1,3 +1,3 @@
 [workspace]
-members = ["dynja", "dynja_derive", "dynja_tests"]
+members = ["dynja", "dynja_bench", "dynja_derive", "dynja_tests"]
 resolver = "2"
