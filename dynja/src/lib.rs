@@ -15,7 +15,7 @@ pub trait TemplateFile {
                               // just like with 'askama'.
 }
 
-pub fn templates() -> &'static Mutex<Environment<'static>> {
+pub fn environment() -> &'static Mutex<Environment<'static>> {
     static ENV: OnceLock<Mutex<Environment>> = OnceLock::new();
     ENV.get_or_init(|| {
         let mut env = Environment::new();

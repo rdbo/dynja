@@ -61,7 +61,7 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
 
         impl #impl_generics #struct_ident #ty_generics #where_clause {
             fn render(&self) -> Result<String, dynja::minijinja::Error> {
-                let mut templates = dynja::templates().lock().unwrap();
+                let mut templates = dynja::environment().lock().unwrap();
                 templates.clear_templates(); // Necessary for hot reloading.
                                              // Getting the template will force a new call to the 'path_loader'
                 let template = templates.get_template(<Self as dynja::TemplateFile>::PATH)?;
