@@ -14,9 +14,10 @@ And that's what Dynja essentially is
 Add the `dynja` dependency to your `Cargo.toml`, along with the `askama` dependency. The `minijinja` dependency isn't necessary, because it is only used internally, whereas `askama` needs to be exported on release builds.
 ```toml
 [dependencies]
-dynja = "0.1"
+dynja = { version = "0.4", features = ["askama_release"] }
 askama = "0.12"
 ```
+
 Now you can import `dynja` and use it as if it were `askama`. Nice huh?
 ```rust
 use dynja::Template;
@@ -33,6 +34,12 @@ fn main() {
 }
 ```
 It will automatically choose between minijinja on debug, and askama on release, so you don't have to worry about it.
+
+NOTE: You can use `dynja` without askama if you wish. Just add the following in your `Cargo.toml` instead:
+```toml
+dynja = "0.4"
+```
+It has optimizations for `minijinja` on release mode as well, but it won't be as performant as `askama`.
 
 Have fun!
 
