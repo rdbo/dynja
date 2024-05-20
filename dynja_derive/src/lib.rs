@@ -60,7 +60,7 @@ pub fn derive_template(input: TokenStream) -> TokenStream {
         }
 
         impl #impl_generics #struct_ident #ty_generics #where_clause {
-            fn render(&self) -> Result<String, dynja::minijinja::Error> {
+            fn render(&self) -> std::result::Result<String, dynja::minijinja::Error> {
                 let mut templates = dynja::environment().lock().unwrap();
                 if cfg!(debug_assertions) {
                     templates.clear_templates(); // Necessary for hot reloading.
